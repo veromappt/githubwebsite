@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree and Streetlamp map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: nowrap;
+            height: 80vh;
+        }
+
+        #sidebar {
+            width: 40%;
+            padding: 20px;
+            background-color: #e6ebf0;
+            overflow-y: auto;
+            border-right: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            box-sizing: border-box;
+        }
+
+        #map {
+            width: 60%;
+            height: calc(100% - 20px);
+            margin: 10px 0;
+        }
+
+        .chart-container {
+            margin-top: 20px;
+        }
+
+        .dropdowns {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="sidebar">
+            <div class="dropdowns">
+                                
+                <label for="locationSelect" style="margin-top: 10px;"><strong>Choose Location:</strong></label>
+                <select id="locationSelect" class="select">
+                    <option value="heidelberg">Heidelberg, Germany</option>
+                    <option value="stockholm">Stockholm, Sweden</option>
+                    <option value="oslo">Oslo, Norway</option>
+                    <option value="gainesville">Gainesville, Florida</option>
+                    <option value="sydney">Sydney, Australia</option>
+                    <option value="ottawa">Ottawa, Canada</option>
+                </select>
+                
+                <hr>
+                </br>
+
+                <label for="querySelect"><strong>Choose OSM Query:</strong></label>
+                <select id="querySelect" class="select">
+                    <option value="trees">Trees</option>
+                    <option value="streetlamps">Streetlamps</option>
+                </select>
+                
+            </div>
+
+            <p><strong>Total Elements:</strong> <span id="elementCount">0</span></p>
+
+            <div class="chart-container"> 
+                <canvas id="chart1"></canvas>
+            </div>
+
+            
+        </div>
+
+        <div id="map"></div>
+    </div>
+    
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
